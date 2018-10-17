@@ -40,6 +40,9 @@ handleChange = (value) => {
 </ReactSteps>
 ```
 
+## Screenshot attached
+<img src="https://github.com/vinothkumarrenganathan/rna-steps/blob/master/images/reactsteps.png" alt="Built for react-native" width="64">
+
 ## Development for environments 
 ### For Android
 ```bash
