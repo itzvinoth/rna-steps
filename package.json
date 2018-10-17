@@ -1,0 +1,23 @@
+{
+  "name": "rna-steps",
+  "version": "1.0.2",
+  "description": "React Native Steps Component",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "peerDependencies": {
+    "react": "16.6.0-alpha.8af6728",
+    "react-native": "0.57.3",
+    "react-native-fontawesome": "^5.7.0"
+  },
+  "devDependencies": {
+    "babel-jest": "23.6.0",
+    "babel-preset-react-native": "^4.0.1",
+    "jest": "23.6.0",
+    "metro-react-native-babel-preset": "0.48.1",
+    "react-test-renderer": "16.6.0-alpha.8af6728"
+  },
+  "author": "htoniv <vinoth.vinothrenga@gmail.com>",
+  "license": "ISC"
+}
