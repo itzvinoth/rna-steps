@@ -1,10 +1,14 @@
 {
   "name": "rna-steps",
-  "version": "1.0.2",
+  "version": "1.0.5",
   "description": "React Native Steps Component",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vinothkumarrenganathan/rna-steps.git"
   },
   "peerDependencies": {
     "react": "16.6.0-alpha.8af6728",
@@ -19,5 +23,9 @@
     "react-test-renderer": "16.6.0-alpha.8af6728"
   },
   "author": "htoniv <vinoth.vinothrenga@gmail.com>",
-  "license": "ISC"
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vinothkumarrenganathan/rna-steps/issues"
+  },
+  "homepage": "https://github.com/vinothkumarrenganathan/rna-steps#readme"
 }

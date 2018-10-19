@@ -53,5 +53,3 @@ react-native run-android
 ```bash
 react-native run-ios
 ```
-
-> Inspired by [24ark/react-native-step-indicator](https://github.com/24ark/react-native-step-indicator) &
