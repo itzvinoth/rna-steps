@@ -26,7 +26,7 @@ handleChange = (value) => {
     this.setState({currentPositions: value})
 }
 
-<ReactSteps currentPositions={this.state.currentPositions} onHandleChange={this.handleChange}>
+<ReactSteps currentPositions={this.state.currentPositions} onHandleChange={this.handleChange} circleBgColor="#299DC6" dashedBorderColor="#BCBCBC">
     <Step title="First">
         <Text>Hello</Text>
         <Text>World</Text>

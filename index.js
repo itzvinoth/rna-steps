@@ -21,14 +21,26 @@ export default class ReactSteps extends React.Component {
     this.props.onHandleChange(newPositions);
   }
 
+  dashedBorder = () => {
+    let borderDashColor = this.props.dashedBorderColor;
+    var dashedBorderView = [];
+    for (var i = 0; i < 80; i++) {
+      if (i % 2 == 0) {
+        dashedBorderView.push(<View key={i} style={{width: 2, height: 7, backgroundColor: borderDashColor}}></View>)
+      } else {
+        dashedBorderView.push(<View key={i} style={{width: 2, height: 7, backgroundColor: '#FFF'}}></View>)
+      }
+    }
+    return dashedBorderView;
+  }
+
   render() {
+    let circleBGColor = this.props.circleBgColor
     contents = this.props.children.map((item, index) => {
       const textStyle = {}, contentStyle = {}, containerStyle={};
       textStyle.fontSize = 18;
       textStyle.marginLeft = 20;
       textStyle.fontStyle = 'italic';
-      textStyle.paddingRight = 30;
-    //   contentStyle.margin = 40;
       contentStyle.marginLeft = 40;
       contentStyle.marginRight = 40;
       contentStyle.marginBottom = 40;
@@ -48,7 +60,7 @@ export default class ReactSteps extends React.Component {
       return (
         <View key={item.props.title} style={styles.content}>
           <View style={containerStyle}>
-            <View style={styles.innerCircle}></View>
+            <View style={[styles.innerCircle, {backgroundColor: circleBGColor}]}></View>
             <TouchableOpacity onPress={this.onPressChange.bind(this, index)} style={styles.touchableContainer}>
               <View>
                 <Text style={textStyle}>
@@ -62,6 +74,7 @@ export default class ReactSteps extends React.Component {
               </View>
             </TouchableOpacity>
           </View>
+          <View style={styles.borderLeftStyle}>{this.dashedBorder()}</View>
           <View style={contentStyle}>{item}</View>
         </View>
       );
@@ -79,17 +92,20 @@ export default class ReactSteps extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#F5FCFF',
     marginLeft: 40,
     marginTop: 40,
     marginBottom: 40,
   },
+  borderLeftStyle: {
+    position: 'absolute',
+    overflow: 'hidden',
+    top: 16,
+    bottom: 0,
+    right: '99.99%',
+  },
   content: {
-    position: 'relative', 
-    borderRadius: 1, 
-    borderLeftColor: '#CCC',
-    borderStyle: 'dashed', 
-    borderLeftWidth: 1,
+    position: 'relative',
+    borderStyle: 'dashed',
   },
   touchableContainer: {
     flexDirection: 'row',
@@ -98,18 +114,16 @@ const styles = StyleSheet.create({
   headerText: {
     alignItems: 'flex-start',
     borderRadius: 1,
-    borderLeftWidth: 1,
     marginTop: 10,
   },
   iconContainer: {
     marginTop: 5,
-    marginLeft: 15
+    marginLeft: 15,
   },
   innerCircle: {
-    borderRadius: 5,
-    width: 10,
-    height: 10,
-    backgroundColor: '#47b5dc',
+    borderRadius: 4.5,
+    width: 9,
+    height: 9,
     position: 'absolute',
     top: 6,
     marginLeft: -6,
