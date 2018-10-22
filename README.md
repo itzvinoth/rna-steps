@@ -41,7 +41,7 @@ handleChange = (value) => {
 ```
 
 ## Screenshot attached
-<img src="https://github.com/vinothkumarrenganathan/rna-steps/blob/master/images/reactsteps.png" alt="Built for react-native" width="320" height="580">
+<img src="https://github.com/vinothkumarrenganathan/rna-steps/blob/master/images/rna-steps.gif" alt="Built for react-native" width="280" height="500">
 
 ## Development for environments 
 ### For Android
