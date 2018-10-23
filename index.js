@@ -48,8 +48,6 @@ export default class ReactSteps extends React.Component {
       textStyle.fontSize = 18;
       textStyle.marginLeft = 20;
       textStyle.fontStyle = 'italic';
-      // textStyle.paddingRight = 30;
-    //   contentStyle.margin = 40;
       contentStyle.marginLeft = 40;
       contentStyle.marginRight = 40;
       contentStyle.marginBottom = 40;
@@ -109,8 +107,6 @@ export default class ReactSteps extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    // justifyContent: 'center',
-    // alignItems: 'center',
     marginLeft: 40,
     marginTop: 40,
     marginBottom: 40,
@@ -124,7 +120,6 @@ const styles = StyleSheet.create({
   },
   content: {
     position: 'relative', 
-    // borderRadius: 1, 
     borderStyle: 'dashed',
   },
   touchableContainer: {
@@ -148,15 +143,6 @@ const styles = StyleSheet.create({
     top: 6,
     marginLeft: -6,
   },
-  // circle: {
-  //   width: 16,
-  //   height: 16,
-  //   borderRadius: 10,
-  //   position: 'absolute',
-  //   left: -8,
-  //   alignItems: 'center',
-  //   justifyContent: 'center'
-  // },
   title: {
     fontSize: 18,
   },
