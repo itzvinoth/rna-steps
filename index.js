@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {StyleSheet, Animated, Text, View, SectionList, Alert, ScrollView, TouchableOpacity} from 'react-native';
 import FontAwesome, { Icons } from "react-native-fontawesome";
+import PropTypes from 'prop-types';
 
 export function Step(props) {
   return (
@@ -11,14 +12,19 @@ export function Step(props) {
 export default class ReactSteps extends React.Component {
   
   onPressChange = (index) => {
-    let newPositions = this.props.currentPositions;
-    let indexPosition = newPositions.indexOf(index);
-    if (indexPosition === -1) {
-        newPositions.push(index)
+    let currentPosition;
+    if (this.props.multiple) {
+      currentPosition = this.props.currentPosition;
+      let indexPosition = currentPosition.indexOf(index);
+      if (indexPosition === -1) {
+          currentPosition.push(index)
+      } else {
+          currentPosition.splice(indexPosition, 1)
+      }
     } else {
-        newPositions.splice(indexPosition, 1)
+      currentPosition = index;
     }
-    this.props.onHandleChange(newPositions);
+    this.props.onHandleChange(currentPosition);
   }
 
   dashedBorder = () => {
@@ -34,18 +40,29 @@ export default class ReactSteps extends React.Component {
     return dashedBorderView;
   }
 
-  render() {
-    let circleBGColor = this.props.circleBgColor
+  render () {
+    let { circleBgColor, currentPosition, multiple } = this.props;
+    let fontAwesome;
     contents = this.props.children.map((item, index) => {
-      const textStyle = {}, contentStyle = {}, containerStyle={};
+      const textStyle = {}, contentStyle = {}, containerStyle = {};
       textStyle.fontSize = 18;
       textStyle.marginLeft = 20;
       textStyle.fontStyle = 'italic';
+      // textStyle.paddingRight = 30;
+    //   contentStyle.margin = 40;
       contentStyle.marginLeft = 40;
       contentStyle.marginRight = 40;
       contentStyle.marginBottom = 40;
-      if (this.props.currentPositions.indexOf(index) === -1) {
-        contentStyle.display = 'none';
+      if (multiple) {
+        if (currentPosition.indexOf(index) === -1) {
+          contentStyle.display = 'none';
+        }
+        fontAwesome = <FontAwesome>{(currentPosition.indexOf(index) !== -1) ? Icons.chevronUp : Icons.chevronDown}</FontAwesome>;
+      } else {
+        if (currentPosition !== index) {
+          contentStyle.display = 'none';
+        }
+        fontAwesome = <FontAwesome>{(currentPosition == index) ? Icons.chevronUp : Icons.chevronDown}</FontAwesome>;
       }
       if (this.props.children.length -1 === index) {
         containerStyle.marginBottom = -3;
@@ -60,16 +77,16 @@ export default class ReactSteps extends React.Component {
       return (
         <View key={item.props.title} style={styles.content}>
           <View style={containerStyle}>
-            <View style={[styles.innerCircle, {backgroundColor: circleBGColor}]}></View>
+            <View style={[styles.innerCircle, {backgroundColor: circleBgColor}]}></View>
             <TouchableOpacity onPress={this.onPressChange.bind(this, index)} style={styles.touchableContainer}>
               <View>
                 <Text style={textStyle}>
                   {item.props.title}
                 </Text>
               </View>
-              <View style={styles.iconContainer}>
+              <View style={styles.iconContainer} >
                 <Text>
-                  <FontAwesome>{(this.props.currentPositions.indexOf(index) !== -1) ? Icons.chevronUp : Icons.chevronDown}</FontAwesome>
+                  { fontAwesome }
                 </Text>
               </View>
             </TouchableOpacity>
@@ -92,6 +109,8 @@ export default class ReactSteps extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    // justifyContent: 'center',
+    // alignItems: 'center',
     marginLeft: 40,
     marginTop: 40,
     marginBottom: 40,
@@ -104,7 +123,8 @@ const styles = StyleSheet.create({
     right: '99.99%',
   },
   content: {
-    position: 'relative',
+    position: 'relative', 
+    // borderRadius: 1, 
     borderStyle: 'dashed',
   },
   touchableContainer: {
@@ -128,7 +148,24 @@ const styles = StyleSheet.create({
     top: 6,
     marginLeft: -6,
   },
+  // circle: {
+  //   width: 16,
+  //   height: 16,
+  //   borderRadius: 10,
+  //   position: 'absolute',
+  //   left: -8,
+  //   alignItems: 'center',
+  //   justifyContent: 'center'
+  // },
   title: {
     fontSize: 18,
   },
 });
+
+ReactSteps.propTypes = {
+  multiple: PropTypes.bool,
+  currentPosition: PropTypes.oneOfType([
+    PropTypes.Array,
+    PropTypes.number
+  ])
+};

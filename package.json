@@ -1,6 +1,6 @@
 {
   "name": "rna-steps",
-  "version": "1.0.5",
+  "version": "1.0.7",
   "description": "React Native Steps Component",
   "main": "index.js",
   "scripts": {
@@ -13,7 +13,8 @@
   "peerDependencies": {
     "react": "16.6.0-alpha.8af6728",
     "react-native": "0.57.3",
-    "react-native-fontawesome": "^5.7.0"
+    "react-native-fontawesome": "^5.7.0",
+    "prop-types": "^15.6.2",
   },
   "devDependencies": {
     "babel-jest": "23.6.0",

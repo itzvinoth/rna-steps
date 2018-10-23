@@ -8,6 +8,7 @@ React-Native steps component.
 npm install --save rna-steps
 ```
 
+## For multiple select
 ```jsx
 import ReactSteps, { Step } from 'rna-steps';
 
@@ -26,7 +27,40 @@ handleChange = (value) => {
     this.setState({currentPositions: value})
 }
 
-<ReactSteps currentPositions={this.state.currentPositions} onHandleChange={this.handleChange} circleBgColor="#299DC6" dashedBorderColor="#BCBCBC">
+<ReactSteps currentPositions={this.state.currentPositions} multiple={true} onHandleChange={this.handleChange} circleBgColor="#299DC6" dashedBorderColor="#BCBCBC">
+    <Step title="First">
+        <Text>Hello</Text>
+        <Text>World</Text>
+    </Step>
+    <Step title="Second">
+        <TextInput style={{height: 40}} placeholder="Something Type here"/>
+    </Step>
+    <Step title="Third">
+        <Text>Some text goes here</Text>
+    </Step>
+</ReactSteps>
+```
+
+## For single select
+```jsx
+import ReactSteps, { Step } from 'rna-steps';
+
+// Based upon values given the corresponding index `Step` component will be expanded.  
+
+state = {
+    currentPositions: 1
+}
+
+componentWillMount() {
+    Step(this.props)
+}
+
+// Handling currentPositions based on onPress event
+handleChange = (value) => {
+    this.setState({currentPositions: value})
+}
+
+<ReactSteps currentPositions={this.state.currentPositions} multiple={false} onHandleChange={this.handleChange} circleBgColor="#299DC6" dashedBorderColor="#BCBCBC">
     <Step title="First">
         <Text>Hello</Text>
         <Text>World</Text>
