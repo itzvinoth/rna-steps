@@ -15,19 +15,19 @@ import ReactSteps, { Step } from 'rna-steps';
 // Based upon values given in the array the corresponding index Step component will be expanded.  
 
 state = {
-    currentPositions: [0, 2]
+    currentPosition: [0, 2]
 }
 
 componentWillMount() {
     Step(this.props)
 }
 
-// Handling currentPositions based on onPress event
+// Handling currentPosition based on onPress event
 handleChange = (value) => {
-    this.setState({currentPositions: value})
+    this.setState({currentPosition: value})
 }
 
-<ReactSteps currentPositions={this.state.currentPositions} multiple={true} onHandleChange={this.handleChange} circleBgColor="#299DC6" dashedBorderColor="#BCBCBC">
+<ReactSteps currentPosition={this.state.currentPosition} multiple={true} onHandleChange={this.handleChange} circleBgColor="#299DC6" dashedBorderColor="#BCBCBC">
     <Step title="First">
         <Text>Hello</Text>
         <Text>World</Text>
@@ -48,19 +48,19 @@ import ReactSteps, { Step } from 'rna-steps';
 // Based upon values given the corresponding index `Step` component will be expanded.  
 
 state = {
-    currentPositions: 1
+    currentPosition: 1
 }
 
 componentWillMount() {
     Step(this.props)
 }
 
-// Handling currentPositions based on onPress event
+// Handling currentPosition based on onPress event
 handleChange = (value) => {
-    this.setState({currentPositions: value})
+    this.setState({currentPosition: value})
 }
 
-<ReactSteps currentPositions={this.state.currentPositions} multiple={false} onHandleChange={this.handleChange} circleBgColor="#299DC6" dashedBorderColor="#BCBCBC">
+<ReactSteps currentPosition={this.state.currentPosition} multiple={false} onHandleChange={this.handleChange} circleBgColor="#299DC6" dashedBorderColor="#BCBCBC">
     <Step title="First">
         <Text>Hello</Text>
         <Text>World</Text>
